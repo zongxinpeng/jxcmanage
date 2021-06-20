@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jxc.jxcmanage.mapper.UserInfoMapper">
+
+    <select id="queryUserList" resultType="UserInfo" parameterType="java.util.Map">
+      SELECT
+        id,
+        user_code AS "userCode",
+        user_password AS "userPassword",
+        user_name AS "userName",
+        user_desc AS "userDesc",
+        created_by AS "createdBy",
+        created_date AS "createdDate",
+        updated_by AS "updatedBy",
+        updated_date AS "updatedDate"
+
+        FROM user_info
+        where 1=1
+        <if test='userCode != null and userCode != "" '>
+          and user_code = #{userCode, jdbcType=VARCHAR}
+        </if>
+        <if test='userName != null and userName != "" '>
+            AND user_name LIKE "%"#{userName, jdbcType=VARCHAR}"%"
+        </if>
+
+        <if test='createdDateStart !=null and createdDateStart != "" and createdDateEnd !=null and createdDateEnd != "" ' >
+            and created_date <![CDATA[ >= ]]> #{createdDateStart, jdbcType=VARCHAR}
+            and created_date <![CDATA[ <= ]]> #{createdDateEnd, jdbcType=VARCHAR}
+        </if>
+        order by updated_date desc
+    </select>
+
+    <delete id="deleteUserInfoById" parameterType="java.lang.Integer">
+        delete from user_info
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertUserInfo" parameterType="UserInfo">
+        INSERT  INTO user_info(
+        user_code,
+        user_password,
+        user_name,
+        user_desc,
+        created_by,
+        created_date,
+        updated_by,
+        updated_date
+        )
+        VALUES (
+        #{userCode, jdbcType=VARCHAR},
+        #{userPassword, jdbcType=VARCHAR},
+        #{userName, jdbcType=VARCHAR},
+        #{userDesc, jdbcType=VARCHAR},
+        #{createdBy, jdbcType=VARCHAR},
+        NOW(),
+        #{updatedBy, jdbcType=VARCHAR},
+        NOW()
+        )
+    </insert>
+
+    <update id="updateUserInfoById" parameterType="UserInfo">
+        UPDATE user_info
+        SET
+        <if test='userCode != null and userCode != "" '>
+            user_code = #{userCode, jdbcType=VARCHAR}
+        </if>
+        <if test='userPassword != null and userPassword != "" '>
+            user_password = #{userPassword, jdbcType=VARCHAR}
+        </if>
+        <if test='userName != null and userName != "" '>
+            user_name = #{userName, jdbcType=VARCHAR}
+        </if>
+
+        <if test='userDesc != null and userDesc != "" '>
+            user_desc = #{userDesc, jdbcType=VARCHAR}
+        </if>
+        <if test='updatedBy != null and updatedBy != "" '>
+            updated_by = #{updatedBy, jdbcType=VARCHAR}
+        </if>
+        updated_date = NOW()
+        WHERE id = #{id, jdbcType=INTEGER}
+    </update>
+
+</mapper>
