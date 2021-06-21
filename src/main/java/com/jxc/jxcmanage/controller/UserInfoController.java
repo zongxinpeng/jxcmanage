@@ -24,6 +24,11 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
+    /**
+     * 用户列表
+     * @param param
+     * @return
+     */
     @PostMapping("/queryUserList")
     public ResultBean queryUserList(@RequestBody Map<String,Object> param) {
         String createdDateStart = (String)param.get("createdDateStart");
@@ -37,5 +42,38 @@ public class UserInfoController {
 
         return ResultBean.success(userInfoService.queryUserList(param));
     }
+
+
+    /**
+     * 删除用户
+     * @param param
+     * @return
+     */
+    @PostMapping("/deleteUserInfoById")
+    public ResultBean deleteUserInfoById(@RequestBody Map<String,Object> param){
+        Integer id = (Integer) param.get("id");
+        return ResultBean.success(userInfoService.deleteUserInfoById(id));
+    }
+
+    /**
+     * 新增用户
+     * @param userInfo
+     * @return
+     */
+    @PostMapping("/insertUserInfo")
+    public ResultBean insertUserInfo(@RequestBody UserInfo userInfo) {
+        return ResultBean.success(userInfoService.insertUserInfo(userInfo));
+    }
+
+    /**
+     * 更新用户
+     * @param userInfo
+     * @return
+     */
+    @PostMapping("/updateUserInfoById")
+    public ResultBean updateUserInfoById(@RequestBody UserInfo userInfo) {
+        return ResultBean.success(userInfoService.updateUserInfoById(userInfo));
+    }
+
 
 }

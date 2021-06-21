@@ -58,4 +58,6 @@ build/
 .vscode/
 
 .mvn
+/.mvn
+/.mvn/
 

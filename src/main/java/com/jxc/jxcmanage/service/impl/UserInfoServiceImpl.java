@@ -27,4 +27,19 @@ public class UserInfoServiceImpl implements UserInfoService {
         resultData.put("rows",page.getList());
         return resultData;
     }
+
+    @Override
+    public int deleteUserInfoById(Integer id) {
+        return userInfoMapper.deleteUserInfoById(id);
+    }
+
+    @Override
+    public int insertUserInfo(UserInfo userInfo) {
+        return userInfoMapper.insertUserInfo(userInfo);
+    }
+
+    @Override
+    public int updateUserInfoById(UserInfo userInfo) {
+        return userInfoMapper.updateUserInfoById(userInfo);
+    }
 }

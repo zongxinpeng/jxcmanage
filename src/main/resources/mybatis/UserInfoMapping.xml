@@ -62,20 +62,20 @@
         UPDATE user_info
         SET
         <if test='userCode != null and userCode != "" '>
-            user_code = #{userCode, jdbcType=VARCHAR}
+            user_code = #{userCode, jdbcType=VARCHAR},
         </if>
         <if test='userPassword != null and userPassword != "" '>
-            user_password = #{userPassword, jdbcType=VARCHAR}
+            user_password = #{userPassword, jdbcType=VARCHAR},
         </if>
         <if test='userName != null and userName != "" '>
-            user_name = #{userName, jdbcType=VARCHAR}
+            user_name = #{userName, jdbcType=VARCHAR},
         </if>
 
         <if test='userDesc != null and userDesc != "" '>
-            user_desc = #{userDesc, jdbcType=VARCHAR}
+            user_desc = #{userDesc, jdbcType=VARCHAR},
         </if>
         <if test='updatedBy != null and updatedBy != "" '>
-            updated_by = #{updatedBy, jdbcType=VARCHAR}
+            updated_by = #{updatedBy, jdbcType=VARCHAR},
         </if>
         updated_date = NOW()
         WHERE id = #{id, jdbcType=INTEGER}
