@@ -10,7 +10,6 @@ $(function () {
     //toastr.warning('只能选择一行进行编辑');
     //toastr.info('info');
 
-
     $('#txt_search_created_date_start').datetimepicker({
         format: "yyyy-mm-dd",
         autoclose: true,
@@ -44,13 +43,40 @@ $(function () {
         serachList();
     });
 
-    $("#btn_add11").click(function () {
+    //重置
+    $("#btn_rest").click(function () {
+        resetSerach();
+        serachList();
+    });
+
+
+    $("#btn_add").click(function () {
         $("#myModalLabel").text("新增");
+        resetUserInfo();
         $('#myModal').modal();
+    });
+
+    //保存提交
+    $("#btn_submit").click(function () {
+        saveUserInfo();
     });
 
     $("#btn_update").click(function () {
         $("#myModalLabel").text("更新");
+
+        //取表格的选中行数据
+        var arrselections = $("#tb_departments").bootstrapTable('getSelections');
+        if (arrselections.length <= 0) {
+            toastr.warning('请选择一条数据');
+            return;
+        }
+        var userInfo = arrselections[0];
+        $("#txt_id").val(userInfo.id);
+        $("#txt_userCode").val(userInfo.userCode);
+        $("#txt_userName").val(userInfo.userName);
+        $("#txt_userPassword").val(userInfo.userPassword);
+        $("#txt_userDesc").val(userInfo.userDesc);
+
         $('#myModal').modal();
     });
 
@@ -64,9 +90,6 @@ $(function () {
         var arrselections = $("#tb_departments").bootstrapTable('getSelections');
         if (arrselections.length <= 0) {
             toastr.warning('请选择有效数据');
-            toastr.success('提交数据成功');
-            toastr.error('Error');
-            toastr.info('info');
             return;
         }
 
@@ -74,7 +97,28 @@ $(function () {
             if (!e) {
                 return;
             }
+            var id = arrselections[0].id;
+
             $.ajax({
+                type: "post",
+                url: "/userInfo/deleteUserInfoById",
+                data: JSON.stringify({id:id}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(result){
+                    if(result.code == "200" && result.data >0 ){
+                        toastr.success("操作成功");
+                    } else {
+                        toastr.warning(result.message);
+                    }
+                    serachList();
+                },
+                error: function(error){
+                    toastr.error("系统异常！");
+                }
+            });
+
+            /*$.ajax({
                 type: "post",
                 url: "/api/DepartmentApi/Delete",
                 data: { "": JSON.stringify(arrselections) },
@@ -91,7 +135,7 @@ $(function () {
 
                 }
 
-            });
+            });*/
         });
     });
 
@@ -181,6 +225,7 @@ function serachList() {
     $("#tb_departments").bootstrapTable('refresh');
 }
 
+//判断时间
 function cheakCreateDate() {
     var createdDateStart = $("#txt_search_created_date_start").val();
     var createdDateEnd = $("#txt_search_created_date_end").val();
@@ -198,4 +243,116 @@ function cheakCreateDate() {
         return false;
     }
     return true;
+}
+
+//重置查询条件
+function resetSerach() {
+    $("#txt_search_user_code").val("");
+    $("#txt_search_user_name").val("");
+    $("#txt_search_created_date_start").val("");
+    $("#txt_search_created_date_end").val("");
+}
+
+//修改框条件重置
+function resetUserInfo() {
+    $("#txt_userCode").val("");
+    $("#txt_userName").val("");
+    $("#txt_userPassword").val("");
+    $("#txt_userDesc").val("");
+}
+
+//更新新用户信息
+function updateUserInfoById() {
+    var param = getUserInfoParam("edit");
+    if(param==undefined){
+        return;
+    }
+    $.ajax({
+        type: "post",
+        url: "/userInfo/updateUserInfoById",
+        data: JSON.stringify(param),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function(result){
+            if(result.code == "200" && result.data >0 ){
+                toastr.success("操作成功");
+            } else {
+                toastr.warning(result.message);
+            }
+            serachList();
+        },
+        error: function(error){
+            toastr.error("系统异常！");
+        }
+    });
+
+
+}
+
+
+function getUserInfoParam(type) {
+    var id = $("#txt_id").val();
+    var userCode = $("#txt_userCode").val();
+    var userName = $("#txt_userName").val();
+    var userPassword = $("#txt_userPassword").val();
+    var userDesc = $("#txt_userDesc").val();
+    if(type=="add" && checkIsEmpty(id)){
+        id = "";
+    }
+    if(checkIsEmpty(userCode)){
+        toastr.warning('用户名不能为空');
+        return;
+    }
+    if(checkIsEmpty(userName)){
+        toastr.warning('姓名不能为空');
+        return;
+    }
+    if(checkIsEmpty(userPassword)){
+        toastr.warning('密码不能为空');
+        return;
+    }
+    var param = {
+        id : id,
+        userCode : userCode,
+        userName: userName,
+        userPassword:userPassword,
+        userDesc:userDesc
+    }
+    return param;
+}
+
+//保存用户信息
+function saveUserInfo() {
+
+    var param = getUserInfoParam("add");
+    if(param==undefined){
+        return;
+    }
+    $.ajax({
+        type: "post",
+        url: "/userInfo/insertUserInfo",
+        data: JSON.stringify(param),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function(result){
+            if(result.code == "200" && result.data >0 ){
+                toastr.success("操作成功");
+            } else {
+                toastr.warning(result.message);
+            }
+            serachList();
+        },
+        error: function(error){
+            toastr.error("系统异常！");
+        }
+    });
+
+
+}
+
+function checkIsEmpty(value) {
+    if(value==null || value=="" || value==undefined || value.trim().length==0){
+        return true;
+    }
+    return false;
 }

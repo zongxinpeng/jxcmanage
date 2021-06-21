@@ -35,11 +35,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public int insertUserInfo(UserInfo userInfo) {
+        userInfo.setCreatedBy(DEFAULT_BY);
+        userInfo.setUpdatedBy(DEFAULT_BY);
         return userInfoMapper.insertUserInfo(userInfo);
     }
 
     @Override
     public int updateUserInfoById(UserInfo userInfo) {
+        userInfo.setUpdatedBy(DEFAULT_BY);
         return userInfoMapper.updateUserInfoById(userInfo);
     }
 }
