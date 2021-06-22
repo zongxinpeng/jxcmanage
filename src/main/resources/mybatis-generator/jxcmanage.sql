@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS `jxc` DEFAULT CHARACTER SET utf8;
-
+use 'jxc';
 /*1.客户表 */
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
@@ -13,7 +13,7 @@ CREATE TABLE `user_info` (
  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
  PRIMARY KEY (`id`)
-) ENGINE=InnoDB　DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `customer`;
 /*1.客户表 */
@@ -31,7 +31,7 @@ CREATE TABLE `customer` (
   `created_date` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB　DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `supplier`;
 /*2.供应商表（厂家表） */
@@ -50,7 +50,7 @@ CREATE TABLE `supplier` (
   `created_date` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB　DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `product`;
 /*3.产品表 */
@@ -69,7 +69,7 @@ CREATE TABLE `product` (
   `created_date` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB　DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `storage`;
 /*4.进货表 　*/
@@ -91,7 +91,7 @@ CREATE TABLE `storage` (
   `created_date` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB　DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `storage_detail`;
 /*5.进货明细表 产品编码	产品名称	产品规格	单位	单价	数量	金额	备注　*/
@@ -111,7 +111,7 @@ CREATE TABLE `storage_detail` (
   `created_date` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB　DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `sale_order`;
 /*6.订单表（销售表） */
@@ -134,7 +134,7 @@ CREATE TABLE `sale_order` (
   `created_date` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB　DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `sale_detail`;
 /*7.售货明细表 */
@@ -154,7 +154,7 @@ CREATE TABLE `sale_detail` (
   `created_date` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB　DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `sale_amount`;
 /*8.销售额表，也可以用于排名　*/
@@ -174,7 +174,7 @@ CREATE TABLE `sale_amount` (
   `created_date` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB　DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `profit_amount`;
 /*9.利润表，也可以用作排名表　*/
@@ -193,7 +193,7 @@ CREATE TABLE `profit_amount` (
   `created_date` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB　DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `account`;
 /*10.账户表　*/
