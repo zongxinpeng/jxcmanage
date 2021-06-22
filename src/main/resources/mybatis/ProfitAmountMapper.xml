@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxc.jxcmanage.code.mapper.ProfitAmountMapper">
+  <resultMap id="BaseResultMap" type="com.jxc.jxcmanage.code.entity.ProfitAmount">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="supplier_id" jdbcType="BIGINT" property="supplierId" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="account_id" jdbcType="BIGINT" property="accountId" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="sale_date" jdbcType="VARCHAR" property="saleDate" />
+    <result column="statistics_type" jdbcType="VARCHAR" property="statisticsType" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, supplier_id, product_id, account_id, amount, sale_date, statistics_type, note, 
+    `status`, created_by, updated_by, created_date, updated_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from profit_amount
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from profit_amount
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jxc.jxcmanage.code.entity.ProfitAmount">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into profit_amount (supplier_id, product_id, account_id, 
+      amount, sale_date, statistics_type, 
+      note, `status`, created_by, 
+      updated_by, created_date, updated_date
+      )
+    values (#{supplierId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{accountId,jdbcType=BIGINT}, 
+      #{amount,jdbcType=DECIMAL}, #{saleDate,jdbcType=VARCHAR}, #{statisticsType,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createdBy,jdbcType=VARCHAR}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jxc.jxcmanage.code.entity.ProfitAmount">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into profit_amount
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="saleDate != null">
+        sale_date,
+      </if>
+      <if test="statisticsType != null">
+        statistics_type,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="saleDate != null">
+        #{saleDate,jdbcType=VARCHAR},
+      </if>
+      <if test="statisticsType != null">
+        #{statisticsType,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jxc.jxcmanage.code.entity.ProfitAmount">
+    update profit_amount
+    <set>
+      <if test="supplierId != null">
+        supplier_id = #{supplierId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="saleDate != null">
+        sale_date = #{saleDate,jdbcType=VARCHAR},
+      </if>
+      <if test="statisticsType != null">
+        statistics_type = #{statisticsType,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jxc.jxcmanage.code.entity.ProfitAmount">
+    update profit_amount
+    set supplier_id = #{supplierId,jdbcType=BIGINT},
+      product_id = #{productId,jdbcType=BIGINT},
+      account_id = #{accountId,jdbcType=BIGINT},
+      amount = #{amount,jdbcType=DECIMAL},
+      sale_date = #{saleDate,jdbcType=VARCHAR},
+      statistics_type = #{statisticsType,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

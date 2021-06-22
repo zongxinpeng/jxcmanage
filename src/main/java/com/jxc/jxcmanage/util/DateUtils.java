@@ -1,4 +1,4 @@
-package com.unionpaysmart.odin.util;
+package com.jxc.jxcmanage.util;
 
 
 import java.text.ParseException;
@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.jxc.jxcmanage.constants.Constant;
 
 /**
  * Date Util

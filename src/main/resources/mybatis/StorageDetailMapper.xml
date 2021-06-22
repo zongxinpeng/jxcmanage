@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxc.jxcmanage.code.mapper.StorageDetailMapper">
+  <resultMap id="BaseResultMap" type="com.jxc.jxcmanage.code.entity.StorageDetail">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="supplier_id" jdbcType="BIGINT" property="supplierId" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="count" jdbcType="BIGINT" property="count" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="batch" jdbcType="VARCHAR" property="batch" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, supplier_id, product_id, product_code, price, `count`, amount, batch, note, `status`, 
+    created_by, updated_by, created_date, updated_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from storage_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from storage_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jxc.jxcmanage.code.entity.StorageDetail">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into storage_detail (supplier_id, product_id, product_code, 
+      price, `count`, amount, 
+      batch, note, `status`, 
+      created_by, updated_by, created_date, 
+      updated_date)
+    values (#{supplierId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{productCode,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{count,jdbcType=BIGINT}, #{amount,jdbcType=DECIMAL}, 
+      #{batch,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{createdBy,jdbcType=VARCHAR}, #{updatedBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, 
+      #{updatedDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jxc.jxcmanage.code.entity.StorageDetail">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into storage_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productCode != null">
+        product_code,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="count != null">
+        `count`,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="batch != null">
+        batch,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="batch != null">
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jxc.jxcmanage.code.entity.StorageDetail">
+    update storage_detail
+    <set>
+      <if test="supplierId != null">
+        supplier_id = #{supplierId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productCode != null">
+        product_code = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="count != null">
+        `count` = #{count,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="batch != null">
+        batch = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jxc.jxcmanage.code.entity.StorageDetail">
+    update storage_detail
+    set supplier_id = #{supplierId,jdbcType=BIGINT},
+      product_id = #{productId,jdbcType=BIGINT},
+      product_code = #{productCode,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      `count` = #{count,jdbcType=BIGINT},
+      amount = #{amount,jdbcType=DECIMAL},
+      batch = #{batch,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

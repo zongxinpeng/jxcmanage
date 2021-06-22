@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxc.jxcmanage.code.mapper.SaleOrderMapper">
+  <resultMap id="BaseResultMap" type="com.jxc.jxcmanage.code.entity.SaleOrder">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="customer_id" jdbcType="BIGINT" property="customerId" />
+    <result column="account_id" jdbcType="BIGINT" property="accountId" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="receiver_mobile" jdbcType="VARCHAR" property="receiverMobile" />
+    <result column="express_mobile" jdbcType="VARCHAR" property="expressMobile" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="deliverer" jdbcType="VARCHAR" property="deliverer" />
+    <result column="sale_date" jdbcType="VARCHAR" property="saleDate" />
+    <result column="receive_date" jdbcType="VARCHAR" property="receiveDate" />
+    <result column="batch" jdbcType="VARCHAR" property="batch" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_id, account_id, amount, receiver_mobile, express_mobile, receiver, deliverer, 
+    sale_date, receive_date, batch, note, `status`, created_by, updated_by, created_date, 
+    updated_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sale_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sale_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jxc.jxcmanage.code.entity.SaleOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sale_order (customer_id, account_id, amount, 
+      receiver_mobile, express_mobile, receiver, 
+      deliverer, sale_date, receive_date, 
+      batch, note, `status`, 
+      created_by, updated_by, created_date, 
+      updated_date)
+    values (#{customerId,jdbcType=BIGINT}, #{accountId,jdbcType=BIGINT}, #{amount,jdbcType=DECIMAL}, 
+      #{receiverMobile,jdbcType=VARCHAR}, #{expressMobile,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, 
+      #{deliverer,jdbcType=VARCHAR}, #{saleDate,jdbcType=VARCHAR}, #{receiveDate,jdbcType=VARCHAR}, 
+      #{batch,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{createdBy,jdbcType=VARCHAR}, #{updatedBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, 
+      #{updatedDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jxc.jxcmanage.code.entity.SaleOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sale_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="receiverMobile != null">
+        receiver_mobile,
+      </if>
+      <if test="expressMobile != null">
+        express_mobile,
+      </if>
+      <if test="receiver != null">
+        receiver,
+      </if>
+      <if test="deliverer != null">
+        deliverer,
+      </if>
+      <if test="saleDate != null">
+        sale_date,
+      </if>
+      <if test="receiveDate != null">
+        receive_date,
+      </if>
+      <if test="batch != null">
+        batch,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="receiverMobile != null">
+        #{receiverMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="expressMobile != null">
+        #{expressMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null">
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverer != null">
+        #{deliverer,jdbcType=VARCHAR},
+      </if>
+      <if test="saleDate != null">
+        #{saleDate,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDate != null">
+        #{receiveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jxc.jxcmanage.code.entity.SaleOrder">
+    update sale_order
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="receiverMobile != null">
+        receiver_mobile = #{receiverMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="expressMobile != null">
+        express_mobile = #{expressMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null">
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverer != null">
+        deliverer = #{deliverer,jdbcType=VARCHAR},
+      </if>
+      <if test="saleDate != null">
+        sale_date = #{saleDate,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDate != null">
+        receive_date = #{receiveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        batch = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jxc.jxcmanage.code.entity.SaleOrder">
+    update sale_order
+    set customer_id = #{customerId,jdbcType=BIGINT},
+      account_id = #{accountId,jdbcType=BIGINT},
+      amount = #{amount,jdbcType=DECIMAL},
+      receiver_mobile = #{receiverMobile,jdbcType=VARCHAR},
+      express_mobile = #{expressMobile,jdbcType=VARCHAR},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      deliverer = #{deliverer,jdbcType=VARCHAR},
+      sale_date = #{saleDate,jdbcType=VARCHAR},
+      receive_date = #{receiveDate,jdbcType=VARCHAR},
+      batch = #{batch,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
