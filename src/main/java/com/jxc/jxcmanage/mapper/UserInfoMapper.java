@@ -1,6 +1,6 @@
 package com.jxc.jxcmanage.mapper;
 
-import com.jxc.jxcmanage.pojo.UserInfo;
+import com.jxc.jxcmanage.entity.UserInfo;
 
 import java.util.List;
 import java.util.Map;

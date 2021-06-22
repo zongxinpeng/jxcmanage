@@ -52,6 +52,7 @@ $(function () {
 
     $("#btn_add").click(function () {
         $("#myModalLabel").text("新增");
+        $("#txt_type").val("add");
         resetUserInfo();
         $('#myModal').modal();
     });
@@ -63,6 +64,7 @@ $(function () {
 
     $("#btn_update").click(function () {
         $("#myModalLabel").text("更新");
+        $("#txt_type").val("edit");
 
         //取表格的选中行数据
         var arrselections = $("#tb_departments").bootstrapTable('getSelections');
@@ -261,33 +263,6 @@ function resetUserInfo() {
     $("#txt_userDesc").val("");
 }
 
-//更新新用户信息
-function updateUserInfoById() {
-    var param = getUserInfoParam("edit");
-    if(param==undefined){
-        return;
-    }
-    $.ajax({
-        type: "post",
-        url: "/userInfo/updateUserInfoById",
-        data: JSON.stringify(param),
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function(result){
-            if(result.code == "200" && result.data >0 ){
-                toastr.success("操作成功");
-            } else {
-                toastr.warning(result.message);
-            }
-            serachList();
-        },
-        error: function(error){
-            toastr.error("系统异常！");
-        }
-    });
-}
-
-
 function getUserInfoParam(type) {
     var id = $("#txt_id").val();
     var userCode = $("#txt_userCode").val();
@@ -321,14 +296,14 @@ function getUserInfoParam(type) {
 
 //保存用户信息
 function saveUserInfo() {
-
-    var param = getUserInfoParam("add");
+    var type = $("#txt_type").val();
+    var param = getUserInfoParam(type);
     if(param==undefined){
         return;
     }
     $.ajax({
         type: "post",
-        url: "/userInfo/insertUserInfo",
+        url: "/userInfo/addOrUpdateUserInfo",
         data: JSON.stringify(param),
         dataType: "json",
         contentType: "application/json; charset=utf-8",

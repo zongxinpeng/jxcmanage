@@ -3,10 +3,12 @@ package com.jxc.jxcmanage.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jxc.jxcmanage.mapper.UserInfoMapper;
-import com.jxc.jxcmanage.pojo.UserInfo;
+import com.jxc.jxcmanage.entity.UserInfo;
 import com.jxc.jxcmanage.service.UserInfoService;
+import com.jxc.jxcmanage.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,15 +36,14 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public int insertUserInfo(UserInfo userInfo) {
-        userInfo.setCreatedBy(DEFAULT_BY);
+    public int addOrUpdateUserInfo(UserInfo userInfo) {
+        //更新
         userInfo.setUpdatedBy(DEFAULT_BY);
-        return userInfoMapper.insertUserInfo(userInfo);
-    }
-
-    @Override
-    public int updateUserInfoById(UserInfo userInfo) {
-        userInfo.setUpdatedBy(DEFAULT_BY);
-        return userInfoMapper.updateUserInfoById(userInfo);
+        if(userInfo.getId()!=null && userInfo.getId().intValue()>0){
+            return userInfoMapper.updateUserInfoById(userInfo);
+        } else {//新增
+            userInfo.setCreatedBy(DEFAULT_BY);
+            return userInfoMapper.insertUserInfo(userInfo);
+        }
     }
 }

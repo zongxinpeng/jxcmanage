@@ -9,9 +9,9 @@ CREATE TABLE `user_info` (
  `user_name` VARCHAR(200) NOT NULL COMMENT '姓名',
  `user_desc` VARCHAR(500) COMMENT '备注',
  `created_by` VARCHAR(100) NOT NULL COMMENT '创建人',
- `created_date` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+ `created_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
  `updated_by` VARCHAR(100) NOT NULL COMMENT '更新人',
- `updated_date` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+ `updated_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
  PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -28,8 +28,8 @@ CREATE TABLE `customer` (
   `status` int(1) DEFAULT 0 COMMENT '状态，0是删除，1是正常',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -47,8 +47,8 @@ CREATE TABLE `supplier` (
   `status` int(1) DEFAULT 0 COMMENT '状态，0是删除，1是正常',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -66,8 +66,8 @@ CREATE TABLE `product` (
   `status` int(1) DEFAULT 0 COMMENT '客户状态，0是删除，1是正常',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -88,8 +88,8 @@ CREATE TABLE `storage` (
   `status` int(1) DEFAULT 0 COMMENT '状态，0是删除，1是正常',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -108,8 +108,8 @@ CREATE TABLE `storage_detail` (
   `status` int(1) DEFAULT 0 COMMENT '状态，0是删除，1是正常',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -131,8 +131,8 @@ CREATE TABLE `sale_order` (
   `status` int(1) DEFAULT 0 COMMENT '状态，0是删除，1是正常',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -151,8 +151,8 @@ CREATE TABLE `sale_detail` (
   `status` int(1) DEFAULT 0 COMMENT '状态，0是删除，1是正常',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -171,8 +171,8 @@ CREATE TABLE `sale_amount` (
   `status` int(1) DEFAULT 0 COMMENT '状态，0是删除，1是正常',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -190,8 +190,8 @@ CREATE TABLE `profit_amount` (
   `status` int(1) DEFAULT 0 COMMENT '状态，0是删除，1是正常',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -207,8 +207,8 @@ CREATE TABLE `account` (
   `status` int(1) NOT NULL COMMENT '状态，0是删除，1是正常',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -222,8 +222,8 @@ CREATE TABLE `sys_department` (
   `status` int(1) NOT NULL COMMENT '账号状态',
   `created_by` VARCHAR(20) NOT NULL COMMENT '创建人',
   `updated_by` VARCHAR(20) NOT NULL COMMENT '更新人',
-  `created_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '创建时间',
-  `updated_date` datetime DEFAULT CURRENT_TIMESTAMP NULL COMMENT '更新时间',
+  `created_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_date` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门表';

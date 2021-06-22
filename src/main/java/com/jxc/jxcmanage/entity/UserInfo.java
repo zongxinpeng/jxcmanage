@@ -1,4 +1,4 @@
-package com.jxc.jxcmanage.pojo;
+package com.jxc.jxcmanage.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
