@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS `jxc` DEFAULT CHARACTER SET utf8;
-
+use `jxc`;
 /*1.客户表 */
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
