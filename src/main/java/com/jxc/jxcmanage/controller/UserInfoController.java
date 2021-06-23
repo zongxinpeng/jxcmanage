@@ -3,7 +3,7 @@ package com.jxc.jxcmanage.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jxc.jxcmanage.common.ResultBean;
-import com.jxc.jxcmanage.pojo.UserInfo;
+import com.jxc.jxcmanage.entity.UserInfo;
 import com.jxc.jxcmanage.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,24 +56,13 @@ public class UserInfoController {
     }
 
     /**
-     * 新增用户
+     * 新增或者修改用户
      * @param userInfo
      * @return
      */
-    @PostMapping("/insertUserInfo")
+    @PostMapping("/addOrUpdateUserInfo")
     public ResultBean insertUserInfo(@RequestBody UserInfo userInfo) {
-        return ResultBean.success(userInfoService.insertUserInfo(userInfo));
+        return ResultBean.success(userInfoService.addOrUpdateUserInfo(userInfo));
     }
-
-    /**
-     * 更新用户
-     * @param userInfo
-     * @return
-     */
-    @PostMapping("/updateUserInfoById")
-    public ResultBean updateUserInfoById(@RequestBody UserInfo userInfo) {
-        return ResultBean.success(userInfoService.updateUserInfoById(userInfo));
-    }
-
 
 }
