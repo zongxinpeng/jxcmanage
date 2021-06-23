@@ -58,12 +58,12 @@
         </javaClientGenerator>
         <!-- table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 -->
 	        <!--如果想生成一个表则tableName="table_name"-->
-		<table tableName="user_info" domainObjectName="UserInfo"
+		<!--<table tableName="user_info" domainObjectName="UserInfo"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 	
@@ -72,7 +72,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 	
@@ -81,7 +81,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 	
@@ -90,7 +90,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 	
@@ -99,7 +99,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 	
@@ -108,7 +108,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 	
@@ -117,7 +117,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 	
@@ -126,7 +126,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 		<table tableName="sale_amount" domainObjectName="SaleAmount"
@@ -134,7 +134,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 		<table tableName="profit_amount" domainObjectName="ProfitAmount"
@@ -142,7 +142,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 		<table tableName="account" domainObjectName="Account"
@@ -150,7 +150,7 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
-			<!-- 数据库表主键 -->
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 		<table tableName="sys_department" domainObjectName="SysDepartment"
@@ -158,8 +158,18 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="false" />
+			&lt;!&ndash; 数据库表主键 &ndash;&gt;
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>-->
+
+		<table tableName="menu_info" domainObjectName="MenuInfo"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false">
+			<property name="useActualColumnNames" value="false" />
 			<!-- 数据库表主键 -->
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
+
     </context>
 </generatorConfiguration>

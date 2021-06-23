@@ -28,7 +28,7 @@ public class ServiceForTest {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServiceForTest.class);
 
-	@Scheduled(fixedRate = 2000)
+	//@Scheduled(fixedRate = 2000)
 	public void test() {
 		Account record = new Account();
 		record.setDepartment(1);
@@ -41,7 +41,7 @@ public class ServiceForTest {
 		accountMapper.insert(record);
 	}
 
-	@Scheduled(fixedRate = 2000)
+	//@Scheduled(fixedRate = 2000)
 	public void tests() {
 		int size = 5;
 		List<ProductDto> dtos = new ArrayList<>();
