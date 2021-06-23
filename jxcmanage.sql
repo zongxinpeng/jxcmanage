@@ -236,6 +236,7 @@ CREATE TABLE `menu_info` (
  `menu_url` VARCHAR(200) COMMENT '菜单地址',
  `menu_desc` VARCHAR(200) COMMENT '菜单备注',
  `pid` BIGINT(20) COMMENT '父菜单id',
+ `orders` BIGINT(20) DEFAULT 50 COMMENT '排序',
  `status` INT(1) DEFAULT 0 COMMENT '客户状态，0是删除，1是正常',
  `created_by` VARCHAR(100) NOT NULL COMMENT '创建人',
  `created_date` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
