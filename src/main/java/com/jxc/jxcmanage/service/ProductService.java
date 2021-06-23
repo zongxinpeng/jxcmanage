@@ -12,10 +12,13 @@ import org.springframework.util.ObjectUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jxc.jxcmanage.code.entity.Product;
+import com.jxc.jxcmanage.code.entity.SaleOrder;
 import com.jxc.jxcmanage.code.mapper.ProductMapper;
+import com.jxc.jxcmanage.code.mapper.SaleOrderMapper;
 import com.jxc.jxcmanage.common.ResultBean;
 import com.jxc.jxcmanage.constants.Constant;
 import com.jxc.jxcmanage.dto.ProductDto;
+import com.jxc.jxcmanage.dto.SaleOrderDto;
 import com.jxc.jxcmanage.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +28,8 @@ public class ProductService {
 
 	@Autowired
 	private ProductMapper productMapper;
+	@Autowired
+	private SaleOrderMapper saleOrderMapper;
 
 	/**
 	 * 保存
@@ -127,24 +132,45 @@ public class ProductService {
 		return ResultBean.success(resultData);
 	}
 
-	
 	/**
-	 * 分页查询
+	 * 数据导入
 	 * 
 	 * @param param
 	 * @return
 	 */
-	public ResultBean csvImport(final List<ProductDto> params) {
+	public ResultBean list(final ProductDto param) {
+		List<ProductDto> list = null;
 		try {
-			productMapper.insertBatch(params);
+			list = productMapper.list(param);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResultBean.fail();
 		}
+		return ResultBean.success(list);
+	}
+
+	/**
+	 * 数据导入
+	 * 
+	 * @param param
+	 * @return
+	 */
+	public ResultBean csvImport(final SaleOrderDto param, final List<ProductDto> params) {
+		try {
+			SaleOrder saleOrder = new SaleOrder();
+			// 生成进货单数据
+			BeanUtils.copyProperties(param, saleOrder);
+			saleOrderMapper.insert(saleOrder);
+			// 生成产品明细
+			productMapper.insertBatch(params);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResultBean.fail("文件写入失败！");
+		}
 		String message = String.format(Constant.IMPORT_BATCH, params.size());
 		return ResultBean.success(message);
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(String.format(Constant.LOG_FORMAT, "产品数据"));
 	}

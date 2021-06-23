@@ -20,8 +20,13 @@ public class Constant {
 	public static final String LONG_TYPE = "Long";
 	public static final int ZERO = 0;
 	public static final int ONE = 1;
-	public static final  String SPOT = ".";
+	public static final String SPOT = ".";
 	public static final String COMBINE = "字段:%s　由值:%s　改为:%s";
 	public static final String PREFIX = "更新数据,对比后发现变更为:[%s]";
 	public static final String IMPORT_BATCH = "批量导入数据，共计：%s 条";
+	public static final String COMMA = "+";
+	public static final String NA = "NA";
+	public static final String HORIZONTAL = "|";
+	public static final String CROSSING = "-";
+
 }
