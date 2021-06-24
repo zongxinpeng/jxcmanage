@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxc.jxcmanage.code.mapper.SupplierMapper">
+	<resultMap id="CustomBaseResultMap" type="com.jxc.jxcmanage.dto.SupplierDto">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="code" jdbcType="VARCHAR" property="code" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="link_mobile" jdbcType="VARCHAR" property="linkMobile" />
+		<result column="link_address" jdbcType="VARCHAR" property="linkAddress" />
+		<result column="fax" jdbcType="VARCHAR" property="fax" />
+		<result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+		<result column="note" jdbcType="VARCHAR" property="note" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+		<result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+		<result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+		<result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+	</resultMap>
+
+	<insert id="insertBatch" parameterType="com.jxc.jxcmanage.dto.SupplierDto">
+		INSERT INTO supplier (
+		code,
+		name,
+		link_mobile,
+		link_address,
+		fax,
+		city_code,
+		note,
+		`status`,
+		created_by,
+		updated_by,
+		created_date,
+		updated_date)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.code},
+			#{item.name},
+			#{item.linkMobile},
+			#{item.linkAddress},
+			#{item.fax},
+			#{item.cityCode},
+			#{item.note},
+			#{item.status},
+			#{item.createdBy},
+			#{item.updatedBy},
+			#{item.createdDate},
+			#{item.updatedDate}
+			)
+		</foreach>
+	</insert>
+	<select id="list" resultMap="CustomBaseResultMap">
+		SELECT * FROM supplier
+		<where>
+			<if test="code != null">
+				AND code = #{code}
+			</if>
+			<if test="status != null">
+				AND `status` = #{status}
+			</if>
+			<if test="city_code != null">
+				AND city_code = #{cityCode}
+			</if>
+		</where>
+	</select>
+</mapper>
