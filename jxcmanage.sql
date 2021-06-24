@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS `jxc` DEFAULT CHARACTER SET utf8;
 use 'jxc';
-/*1.客户表 */
+/*1.用户表 */
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
@@ -227,3 +227,20 @@ CREATE TABLE `sys_department` (
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门表';
+
+/*12.菜单表 */
+DROP TABLE IF EXISTS `meun_info`;
+CREATE TABLE `menu_info` (
+ `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+ `menu_name` VARCHAR(100) NOT NULL COMMENT '菜单名称',
+ `menu_url` VARCHAR(200) COMMENT '菜单地址',
+ `menu_desc` VARCHAR(200) COMMENT '菜单备注',
+ `pid` BIGINT(20) COMMENT '父菜单id',
+ `orders` BIGINT(20) DEFAULT 50 COMMENT '排序',
+ `status` INT(1) DEFAULT 0 COMMENT '客户状态，0是删除，1是正常',
+ `created_by` VARCHAR(100) NOT NULL COMMENT '创建人',
+ `created_date` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+ `updated_by` VARCHAR(100) NOT NULL COMMENT '更新人',
+ `updated_date` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+ PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;

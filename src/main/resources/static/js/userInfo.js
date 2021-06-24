@@ -179,8 +179,6 @@ function initTable() {
             title: '序号',
             align: 'left', //水平居中
             formatter: function (value, row, index) {
-                //console.log(value);
-                //console.log(row);
                 return index + 1;
             }
         }, {
