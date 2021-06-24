@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 import com.github.pagehelper.PageHelper;
@@ -19,6 +20,7 @@ import com.jxc.jxcmanage.constants.Constant;
 import com.jxc.jxcmanage.dto.SaleDetailDto;
 import com.jxc.jxcmanage.util.StringUtil;
 
+@Service
 public class SaleDetailService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SaleOrderService.class);
