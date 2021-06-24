@@ -1,29 +1,12 @@
 package com.jxc.jxcmanage.service;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.jxc.jxcmanage.code.entity.MenuInfo;
-import com.jxc.jxcmanage.code.entity.Product;
-import com.jxc.jxcmanage.code.entity.SaleOrder;
 import com.jxc.jxcmanage.code.mapper.MenuInfoMapper;
-import com.jxc.jxcmanage.code.mapper.ProductMapper;
-import com.jxc.jxcmanage.code.mapper.SaleOrderMapper;
 import com.jxc.jxcmanage.common.ResultBean;
-import com.jxc.jxcmanage.constants.Constant;
-import com.jxc.jxcmanage.dto.ProductDto;
-import com.jxc.jxcmanage.dto.SaleOrderDto;
-import com.jxc.jxcmanage.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ObjectUtils;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service

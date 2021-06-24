@@ -1,18 +1,10 @@
 package com.jxc.jxcmanage.controller;
 
 import com.jxc.jxcmanage.common.ResultBean;
-import com.jxc.jxcmanage.dto.ProductDto;
-import com.jxc.jxcmanage.dto.SaleOrderDto;
 import com.jxc.jxcmanage.dto.SysDepartmentDto;
-import com.jxc.jxcmanage.service.ProductService;
 import com.jxc.jxcmanage.service.SysDepartmentService;
-import com.jxc.jxcmanage.util.ImportExcel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import java.io.InputStream;
-import java.util.List;
 
 @RestController
 @RequestMapping("/department")
