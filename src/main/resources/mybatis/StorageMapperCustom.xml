@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxc.jxcmanage.code.mapper.StorageMapper">
+  <resultMap id="CustomBaseResultMap" type="com.jxc.jxcmanage.code.entity.Storage">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="supplier_id" jdbcType="BIGINT" property="supplierId" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="supplier_mobile" jdbcType="VARCHAR" property="supplierMobile" />
+    <result column="express_mobile" jdbcType="VARCHAR" property="expressMobile" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="deliverer" jdbcType="VARCHAR" property="deliverer" />
+    <result column="deliver_date" jdbcType="VARCHAR" property="deliverDate" />
+    <result column="receive_date" jdbcType="VARCHAR" property="receiveDate" />
+    <result column="batch" jdbcType="VARCHAR" property="batch" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+  </resultMap>
+	<select id="list" resultMap="CustomBaseResultMap">
+		SELECT * FROM storage
+		<where>
+			<if test="supplier_id != null">
+				AND supplier_id = #{supplierId}
+			</if>
+			<if test="receiver != null">
+				AND receiver like concat('%', trim(#{receiver}), '%')
+			</if>
+			<if test="deliverer != null">
+				AND deliverer like concat('%', trim(#{deliverer}), '%')
+			</if>
+			<if test="supplier_mobile != null">
+				AND supplier_mobile like concat('%', trim(#{supplierMobile}), '%')
+			</if>
+			<if test="express_mobile != null">
+				AND express_mobile like concat('%', trim(#{expressMobile}), '%')
+			</if>
+			<if test="deliver_date != null">
+				AND deliver_date like concat('%', trim(#{deliverDate}), '%')
+			</if>
+			<if test="receive_date != null">
+				AND receive_date like concat('%', trim(#{receiveDate}), '%')
+			</if>
+			<if test="status != null">
+				AND `status` = #{status}
+			</if>
+			<if test="note != null">
+				AND note like concat('%', trim(#{note}), '%')
+			</if>
+			<if test="batch != null">
+				AND batch like concat('%', trim(#{batch}), '%')
+			</if>
+		</where>
+	</select>
+</mapper>

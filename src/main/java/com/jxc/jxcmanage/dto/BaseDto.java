@@ -2,6 +2,15 @@ package com.jxc.jxcmanage.dto;
 
 public class BaseDto {
 
+	private Integer pageNumber;
+
+	private Integer pageSize;
+
+	private Integer userId;
+
+	private String userCode;
+	private String userPassword;
+
 	public Integer getPageNumber() {
 		return pageNumber;
 	}
@@ -16,14 +25,6 @@ public class BaseDto {
 
 	public void setPageSize(Integer pageSize) {
 		this.pageSize = pageSize;
-	}
-
-	public Integer getAccountId() {
-		return accountId;
-	}
-
-	public void setAccountId(Integer accountId) {
-		this.accountId = accountId;
 	}
 
 	public String getUserCode() {
@@ -42,13 +43,12 @@ public class BaseDto {
 		this.userPassword = userPassword;
 	}
 
-	private Integer pageNumber;
+	public Integer getUserId() {
+		return userId;
+	}
 
-	private Integer pageSize;
-
-	private Integer accountId;
-
-	private String userCode;
-	private String userPassword;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
 }

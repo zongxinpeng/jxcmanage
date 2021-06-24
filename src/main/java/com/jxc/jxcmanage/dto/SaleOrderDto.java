@@ -3,7 +3,7 @@ package com.jxc.jxcmanage.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class SaleOrderDto {
+public class SaleOrderDto extends BaseDto{
 	private Long id;
 
 	private Long customerId;
@@ -55,13 +55,6 @@ public class SaleOrderDto {
 		this.customerId = customerId;
 	}
 
-	public Long getAccountId() {
-		return accountId;
-	}
-
-	public void setAccountId(Long accountId) {
-		this.accountId = accountId;
-	}
 
 	public BigDecimal getAmount() {
 		return amount;
@@ -173,5 +166,13 @@ public class SaleOrderDto {
 
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
+	}
+
+	public Long getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
 	}
 }

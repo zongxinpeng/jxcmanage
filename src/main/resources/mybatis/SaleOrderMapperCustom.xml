@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxc.jxcmanage.code.mapper.SaleOrderMapper">
+	<resultMap id="CustomBaseResultMap" type="com.jxc.jxcmanage.dto.SaleOrderDto">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="customer_id" jdbcType="BIGINT" property="customerId" />
+		<result column="account_id" jdbcType="BIGINT" property="accountId" />
+		<result column="amount" jdbcType="DECIMAL" property="amount" />
+		<result column="receiver_mobile" jdbcType="VARCHAR" property="receiverMobile" />
+		<result column="express_mobile" jdbcType="VARCHAR" property="expressMobile" />
+		<result column="receiver" jdbcType="VARCHAR" property="receiver" />
+		<result column="deliverer" jdbcType="VARCHAR" property="deliverer" />
+		<result column="sale_date" jdbcType="VARCHAR" property="saleDate" />
+		<result column="receive_date" jdbcType="VARCHAR" property="receiveDate" />
+		<result column="batch" jdbcType="VARCHAR" property="batch" />
+		<result column="note" jdbcType="VARCHAR" property="note" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+		<result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+		<result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+		<result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+	</resultMap>
+
+	<insert id="insertBatch" parameterType="com.jxc.jxcmanage.dto.SaleOrderDto">
+		INSERT INTO sale_order (
+		customer_id,
+		account_id,
+		amount,
+		receiver_mobile,
+		express_mobile,
+		receiver,
+		deliverer,
+		sale_date,
+		receive_date,
+		batch,
+		note,
+		`status`,
+		created_by,
+		updated_by,
+		created_date,
+		updated_date)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.customerId},
+			#{item.accountId},
+			#{item.amount},
+			#{item.receiverMobile},
+			#{item.expressMobile},
+			#{item.receiver},
+			#{item.deliverer},
+			#{item.saleDate},
+			#{item.receiveDate},
+			#{item.batch},
+			#{item.note},
+			#{item.status},
+			#{item.saleDate},
+			#{item.createdBy},
+			#{item.updatedBy},
+			#{item.createdDate},
+			#{item.updatedDate}
+			)
+		</foreach>
+	</insert>
+	<select id="list" resultMap="CustomBaseResultMap">
+	SELECT * FROM sale_order
+	<where>
+		<if test="customer_id != null">
+			AND customer_id = #{customerId}
+		</if>
+		<if test="account_id != null">
+			AND account_id = #{accountId}
+		</if>
+		<if test="receiver != null">
+			AND receiver like concat('%', trim(#{receiver}), '%')
+		</if>
+		<if test="deliverer != null">
+			AND deliverer like concat('%', trim(#{deliverer}), '%')
+		</if>
+		<if test="receiver_mobile != null">
+			AND receiver_mobile like concat('%', trim(#{receiverMobile}), '%')
+		</if>
+		<if test="express_mobile != null">
+			AND express_mobile like concat('%', trim(#{expressMobile}), '%')
+		</if>
+		<if test="status != null">
+			AND `status` = #{status}
+		</if>
+		<if test="note != null">
+			AND note like concat('%', trim(#{note}), '%')
+		</if>
+	</where>
+	</select>
+</mapper>
