@@ -1,6 +1,9 @@
 package com.jxc.jxcmanage.code.mapper;
 
+import java.util.List;
+
 import com.jxc.jxcmanage.code.entity.ProfitAmount;
+import com.jxc.jxcmanage.dto.ProfitAmountDto;
 
 public interface ProfitAmountMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +17,6 @@ public interface ProfitAmountMapper {
     int updateByPrimaryKeySelective(ProfitAmount record);
 
     int updateByPrimaryKey(ProfitAmount record);
+
+	List<ProfitAmountDto> list(ProfitAmountDto param);
 }

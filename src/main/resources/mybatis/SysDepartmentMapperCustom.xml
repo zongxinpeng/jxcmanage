@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxc.jxcmanage.code.mapper.SysDepartmentMapper">
+	<resultMap id="CustomBaseResultMap" type="com.jxc.jxcmanage.code.entity.SysDepartment">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="parent_id" jdbcType="INTEGER" property="parentId" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+		<result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+		<result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+		<result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+	</resultMap>
+	<select id="list" resultMap="CustomBaseResultMap">
+		SELECT * FROM sys_department
+		<where>
+			<if test="status != null">
+				AND `status` = #{status}
+			</if>
+			<if test="description != null">
+				AND description like concat('%', trim(#{name}), '%')
+			</if>
+			<if test="name != null">
+				AND name like concat('%', trim(#{name}), '%')
+			</if>
+		</where>
+	</select>
+</mapper>
