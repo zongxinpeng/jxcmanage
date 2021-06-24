@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxc.jxcmanage.code.mapper.SaleAmountMapper">
+	<resultMap id="CustomBaseResultMap" type="com.jxc.jxcmanage.dto.SaleAmountDto">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="supplier_id" jdbcType="BIGINT" property="supplierId" />
+		<result column="product_id" jdbcType="BIGINT" property="productId" />
+		<result column="customer_id" jdbcType="BIGINT" property="customerId" />
+		<result column="account_id" jdbcType="BIGINT" property="accountId" />
+		<result column="amount" jdbcType="DECIMAL" property="amount" />
+		<result column="sale_date" jdbcType="VARCHAR" property="saleDate" />
+		<result column="statistics_type" jdbcType="VARCHAR" property="statisticsType" />
+		<result column="note" jdbcType="VARCHAR" property="note" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+		<result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+		<result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+		<result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+	</resultMap>
+	<select id="list" resultMap="CustomBaseResultMap">
+		SELECT * FROM sale_amount
+		<where>
+			<if test="supplier_id != null">
+				AND supplier_id = #{supplierId}
+			</if>
+			<if test="product_id != null">
+				AND product_id = #{productId}
+			</if>
+			<if test="customer_id != null">
+				AND customer_id = #{customerId}
+			</if>
+			<if test="account_id != null">
+				AND account_id = #{accountId}
+			</if>
+			<if test="statistics_type != null">
+				AND statistics_type = #{statisticsType}
+			</if>
+			<if test="product_code != null">
+				AND product_code = #{productCode}
+			</if>
+			<if test="status != null">
+				AND `status` = #{status}
+			</if>
+			<if test="note != null">
+				AND note like concat('%', trim(#{note}), '%')
+			</if>
+		</where>
+	</select>
+</mapper>

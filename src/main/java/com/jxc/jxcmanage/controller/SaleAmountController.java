@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.jxc.jxcmanage.common.ResultBean;
-import com.jxc.jxcmanage.dto.ProfitAmountDto;
-import com.jxc.jxcmanage.service.ProfitAmountService;
+import com.jxc.jxcmanage.dto.SaleAmountDto;
+import com.jxc.jxcmanage.service.SaleAmountService;
 @RestController
-@RequestMapping("/profitAmount")
-public class ProfitAmountController {
+@RequestMapping("/saleAmount")
+public class SaleAmountController {
 
 	@Autowired
-	private ProfitAmountService profitAmountService;
+	private SaleAmountService saleAmountService;
 
 	/**
 	 * 利润额分页
@@ -22,8 +22,8 @@ public class ProfitAmountController {
 	 * @return
 	 */
 	@PostMapping("/page")
-	public ResultBean page(@RequestBody ProfitAmountDto param) {
-		return profitAmountService.page(param);
+	public ResultBean page(@RequestBody SaleAmountDto param) {
+		return saleAmountService.page(param);
 
 	}
 
@@ -34,8 +34,8 @@ public class ProfitAmountController {
 	 * @return
 	 */
 	@PostMapping("/list")
-	public ResultBean list(@RequestBody ProfitAmountDto param) {
-		return profitAmountService.list(param);
+	public ResultBean list(@RequestBody SaleAmountDto param) {
+		return saleAmountService.list(param);
 
 	}
 
@@ -46,8 +46,8 @@ public class ProfitAmountController {
 	 * @return
 	 */
 	@PostMapping("/save")
-	public ResultBean save(@RequestBody ProfitAmountDto param) {
-		return profitAmountService.save(param);
+	public ResultBean save(@RequestBody SaleAmountDto param) {
+		return saleAmountService.save(param);
 
 	}
 
@@ -58,8 +58,8 @@ public class ProfitAmountController {
 	 * @return
 	 */
 	@PostMapping("/update")
-	public ResultBean update(@RequestBody ProfitAmountDto param) {
-		return profitAmountService.update(param);
+	public ResultBean update(@RequestBody SaleAmountDto param) {
+		return saleAmountService.update(param);
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class ProfitAmountController {
 	 * @return
 	 */
 	@PostMapping("/delete")
-	public ResultBean delete(@RequestBody ProfitAmountDto param) {
-		return profitAmountService.delete(param);
+	public ResultBean delete(@RequestBody SaleAmountDto param) {
+		return saleAmountService.delete(param);
 	}
 }
