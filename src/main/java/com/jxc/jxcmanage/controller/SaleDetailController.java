@@ -6,14 +6,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.jxc.jxcmanage.common.ResultBean;
-import com.jxc.jxcmanage.dto.StorageDetailDto;
-import com.jxc.jxcmanage.service.StorageDetailService;
+import com.jxc.jxcmanage.dto.SaleOrderDto;
+import com.jxc.jxcmanage.service.SaleDetailService;
+import com.jxc.jxcmanage.service.SaleOrderService;
 
 @RestController
-@RequestMapping("/storageDetail")
-public class StorageDetailController {
+@RequestMapping("/saleDetail")
+public class SaleDetailController {
+
 	@Autowired
-	private StorageDetailService storageDetailService;
+	private SaleDetailService saleDetailService;
 
 	/**
 	 * 产品分页
@@ -22,8 +24,8 @@ public class StorageDetailController {
 	 * @return
 	 */
 	@PostMapping("/page")
-	public ResultBean page(@RequestBody StorageDetailDto param) {
-		return storageDetailService.page(param);
+	public ResultBean page(@RequestBody SaleDetailDto param) {
+		return saleDetailService.page(param);
 
 	}
 
@@ -34,8 +36,8 @@ public class StorageDetailController {
 	 * @return
 	 */
 	@PostMapping("/list")
-	public ResultBean list(@RequestBody StorageDetailDto param) {
-		return storageDetailService.list(param);
+	public ResultBean list(@RequestBody SaleOrderDto param) {
+		return saleDetailService.list(param);
 
 	}
 
@@ -46,8 +48,8 @@ public class StorageDetailController {
 	 * @return
 	 */
 	@PostMapping("/save")
-	public ResultBean save(@RequestBody StorageDetailDto param) {
-		return storageDetailService.save(param);
+	public ResultBean save(@RequestBody SaleOrderDto param) {
+		return saleDetailService.save(param);
 
 	}
 
@@ -58,8 +60,8 @@ public class StorageDetailController {
 	 * @return
 	 */
 	@PostMapping("/update")
-	public ResultBean update(@RequestBody StorageDetailDto param) {
-		return storageDetailService.update(param);
+	public ResultBean update(@RequestBody SaleOrderDto param) {
+		return saleDetailService.update(param);
 	}
 
 	/**
@@ -69,7 +71,7 @@ public class StorageDetailController {
 	 * @return
 	 */
 	@PostMapping("/delete")
-	public ResultBean delete(@RequestBody StorageDetailDto param) {
-		return storageDetailService.delete(param);
+	public ResultBean delete(@RequestBody SaleOrderDto param) {
+		return saleDetailService.delete(param);
 	}
 }

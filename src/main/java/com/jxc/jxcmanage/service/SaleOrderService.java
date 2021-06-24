@@ -2,6 +2,7 @@ package com.jxc.jxcmanage.service;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,12 @@ import org.springframework.util.ObjectUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jxc.jxcmanage.code.entity.SaleOrder;
+import com.jxc.jxcmanage.code.mapper.SaleDetailMapper;
 import com.jxc.jxcmanage.code.mapper.SaleOrderMapper;
 import com.jxc.jxcmanage.common.ResultBean;
 import com.jxc.jxcmanage.constants.Constant;
+import com.jxc.jxcmanage.dto.ProductDto;
+import com.jxc.jxcmanage.dto.SaleDetailDto;
 import com.jxc.jxcmanage.dto.SaleOrderDto;
 import com.jxc.jxcmanage.util.StringUtil;
 import org.slf4j.Logger;
@@ -24,7 +28,8 @@ public class SaleOrderService {
 
 	@Autowired
 	private SaleOrderMapper saleOrderMapper;
-
+	@Autowired
+	private SaleDetailMapper saleDetailMapper;
 	/**
 	 * 保存
 	 * 
@@ -130,7 +135,36 @@ public class SaleOrderService {
 	}
 
 	public ResultBean list(SaleOrderDto param) {
-		// TODO Auto-generated method stub
-		return null;
+		List<SaleOrderDto> list = null;
+		try {
+			list = saleOrderMapper.list(param);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResultBean.fail();
+		}
+		return ResultBean.success(list);
 	}
+	
+	/**
+	 * 数据导入
+	 * 
+	 * @param param
+	 * @return
+	 */
+	public ResultBean csvImport(final SaleOrderDto param, final List<SaleDetailDto> list) {
+		try {
+			SaleOrder saleOrder = new SaleOrder();
+			// 生成进货单数据
+			BeanUtils.copyProperties(param, saleOrder);
+			saleOrderMapper.insert(saleOrder);
+			// 生成产品明细
+			saleDetailMapper.insertBatch(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResultBean.fail("文件写入失败！");
+		}
+		String message = String.format(Constant.IMPORT_BATCH, list.size());
+		return ResultBean.success(message);
+	}
+
 }
