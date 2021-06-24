@@ -16,7 +16,6 @@ import com.jxc.jxcmanage.code.mapper.SaleDetailMapper;
 import com.jxc.jxcmanage.code.mapper.SaleOrderMapper;
 import com.jxc.jxcmanage.common.ResultBean;
 import com.jxc.jxcmanage.constants.Constant;
-import com.jxc.jxcmanage.dto.ProductDto;
 import com.jxc.jxcmanage.dto.SaleDetailDto;
 import com.jxc.jxcmanage.dto.SaleOrderDto;
 import com.jxc.jxcmanage.util.StringUtil;
@@ -157,7 +156,7 @@ public class SaleOrderService {
 			// 生成进货单数据
 			BeanUtils.copyProperties(param, saleOrder);
 			saleOrderMapper.insert(saleOrder);
-			// 生成产品明细
+			// 生成入库产品明细
 			saleDetailMapper.insertBatch(list);
 		} catch (Exception e) {
 			e.printStackTrace();

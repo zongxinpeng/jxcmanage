@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.jxc.jxcmanage.common.ResultBean;
-import com.jxc.jxcmanage.dto.SaleOrderDto;
+import com.jxc.jxcmanage.dto.SaleDetailDto;
 import com.jxc.jxcmanage.service.SaleDetailService;
-import com.jxc.jxcmanage.service.SaleOrderService;
 
 @RestController
 @RequestMapping("/saleDetail")
@@ -36,7 +35,7 @@ public class SaleDetailController {
 	 * @return
 	 */
 	@PostMapping("/list")
-	public ResultBean list(@RequestBody SaleOrderDto param) {
+	public ResultBean list(@RequestBody SaleDetailDto param) {
 		return saleDetailService.list(param);
 
 	}
@@ -48,7 +47,7 @@ public class SaleDetailController {
 	 * @return
 	 */
 	@PostMapping("/save")
-	public ResultBean save(@RequestBody SaleOrderDto param) {
+	public ResultBean save(@RequestBody SaleDetailDto param) {
 		return saleDetailService.save(param);
 
 	}
@@ -60,7 +59,7 @@ public class SaleDetailController {
 	 * @return
 	 */
 	@PostMapping("/update")
-	public ResultBean update(@RequestBody SaleOrderDto param) {
+	public ResultBean update(@RequestBody SaleDetailDto param) {
 		return saleDetailService.update(param);
 	}
 
@@ -71,7 +70,7 @@ public class SaleDetailController {
 	 * @return
 	 */
 	@PostMapping("/delete")
-	public ResultBean delete(@RequestBody SaleOrderDto param) {
+	public ResultBean delete(@RequestBody SaleDetailDto param) {
 		return saleDetailService.delete(param);
 	}
 }
