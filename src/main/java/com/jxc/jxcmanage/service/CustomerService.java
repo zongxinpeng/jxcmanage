@@ -40,7 +40,7 @@ public class CustomerService {
 		try {
 			customerMapper.insertSelective(customer);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "产品数据"));
+			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "客户数据"));
 			e.printStackTrace();
 		}
 		bean = ResultBean.success();
@@ -82,7 +82,7 @@ public class CustomerService {
 			Customer now = customerMapper.selectByPrimaryKey(param.getId());
 			StringUtil.compareModel(old, now);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "产品数据"));
+			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "客户数据"));
 			e.printStackTrace();
 		}
 		bean = ResultBean.success();
@@ -101,7 +101,7 @@ public class CustomerService {
 			customerMapper.deleteByPrimaryKey(param.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ResultBean.fail(String.format(Constant.LOG_FORMAT, "产品数据"));
+			return ResultBean.fail(String.format(Constant.LOG_FORMAT, "客户数据"));
 		}
 		return ResultBean.success();
 	}
@@ -163,7 +163,7 @@ public class CustomerService {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(String.format(Constant.LOG_FORMAT, "产品数据"));
+		System.out.println(String.format(Constant.LOG_FORMAT, "客户数据"));
 	}
 
 

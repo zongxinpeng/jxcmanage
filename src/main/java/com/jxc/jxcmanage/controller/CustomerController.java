@@ -11,16 +11,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import com.jxc.jxcmanage.common.ResultBean;
+import com.jxc.jxcmanage.dto.CustomerDto;
 import com.jxc.jxcmanage.dto.ProductDto;
 import com.jxc.jxcmanage.dto.SaleOrderDto;
+import com.jxc.jxcmanage.service.CustomerService;
 import com.jxc.jxcmanage.service.ProductService;
 import com.jxc.jxcmanage.util.ImportExcel;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/customer")
 public class CustomerController {
 	@Autowired
-	private ProductService productService;
+	private CustomerService customerService;
 
 	/**
 	 * 产品分页
@@ -29,8 +31,8 @@ public class CustomerController {
 	 * @return
 	 */
 	@PostMapping("/page")
-	public ResultBean page(@RequestBody ProductDto param) {
-		return productService.page(param);
+	public ResultBean page(@RequestBody CustomerDto param) {
+		return customerService.page(param);
 
 	}
 
@@ -41,8 +43,8 @@ public class CustomerController {
 	 * @return
 	 */
 	@PostMapping("/list")
-	public ResultBean list(@RequestBody ProductDto param) {
-		return productService.list(param);
+	public ResultBean list(@RequestBody CustomerDto param) {
+		return customerService.list(param);
 
 	}
 
@@ -53,8 +55,8 @@ public class CustomerController {
 	 * @return
 	 */
 	@PostMapping("/save")
-	public ResultBean save(@RequestBody ProductDto param) {
-		return productService.save(param);
+	public ResultBean save(@RequestBody CustomerDto param) {
+		return customerService.save(param);
 
 	}
 
@@ -65,8 +67,8 @@ public class CustomerController {
 	 * @return
 	 */
 	@PostMapping("/update")
-	public ResultBean update(@RequestBody ProductDto param) {
-		return productService.update(param);
+	public ResultBean update(@RequestBody CustomerDto param) {
+		return customerService.update(param);
 	}
 
 	/**
@@ -76,8 +78,8 @@ public class CustomerController {
 	 * @return
 	 */
 	@PostMapping("/delete")
-	public ResultBean delete(@RequestBody ProductDto param) {
-		return productService.delete(param);
+	public ResultBean delete(@RequestBody CustomerDto param) {
+		return customerService.delete(param);
 	}
 
 	/**
@@ -86,15 +88,15 @@ public class CustomerController {
 	 * @return
 	 */
 	@PostMapping("/csvImport")
-	public ResultBean csvImport(@RequestBody SaleOrderDto param, @RequestParam MultipartFile file) {
-		List<ProductDto> list = null;
+	public ResultBean csvImport( @RequestParam MultipartFile file) {
+		List<CustomerDto> list = null;
 		try {
 			// 获取文件，对文件进行处理
 			String fileName = file.getOriginalFilename();
 			// 获取上传文件的输入流
 			InputStream inputStream = file.getInputStream();
 			// 调用工具类中方法，读取excel文件中数据
-			list = ImportExcel.readExcel(fileName, inputStream, new ProductDto());
+			list = ImportExcel.readExcel(fileName, inputStream, new CustomerDto());
 			// 解析成对应的对象
 		} catch (Exception e) {
 			e.printStackTrace();
