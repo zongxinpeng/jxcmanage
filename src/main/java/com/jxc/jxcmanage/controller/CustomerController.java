@@ -105,6 +105,6 @@ public class CustomerController {
 		if (CollectionUtils.isEmpty(list)) {
 			return ResultBean.fail("数据为空！");
 		}
-		return productService.csvImport(param, list);
+		return customerService.csvImport(list);
 	}
 }
