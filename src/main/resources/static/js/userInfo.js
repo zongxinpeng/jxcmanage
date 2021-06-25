@@ -255,6 +255,8 @@ function resetSerach() {
 
 //修改框条件重置
 function resetUserInfo() {
+    $("#txt_id").val("");
+    $("#txt_type").val("");
     $("#txt_userCode").val("");
     $("#txt_userName").val("");
     $("#txt_userPassword").val("");
