@@ -1321,7 +1321,8 @@
           "'>", name, "</span>");
       },
       makeDOMNodeLine: function (html, setting, node) {
-        html.push("<span id='", node.tId, consts.id.SWITCH, "' title='' class='", view.makeNodeLineClass(setting, node), "' treeNode", consts.id.SWITCH, "></span>");
+        //去掉里面的span
+        //html.push("<span id='", node.tId, consts.id.SWITCH, "' title='' class='", view.makeNodeLineClass(setting, node), "' treeNode", consts.id.SWITCH, "></span>");
       },
       makeDOMNodeMainAfter: function (html, setting, node) {
         html.push("</li>");

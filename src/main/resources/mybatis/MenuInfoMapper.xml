@@ -154,7 +154,7 @@
   <select id="queryMenuList" resultType="MenuInfo" parameterType="java.util.Map">
     SELECT
     id,
-    menu_name AS "menu_name",
+    menu_name AS "menuName",
     menu_url AS "menuUrl",
     pid,
     created_by AS "createdBy",

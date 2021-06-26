@@ -1,22 +1,16 @@
 package com.jxc.jxcmanage.controller;
 
-import java.io.InputStream;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import com.jxc.jxcmanage.common.ResultBean;
 import com.jxc.jxcmanage.dto.CustomerDto;
-import com.jxc.jxcmanage.dto.ProductDto;
-import com.jxc.jxcmanage.dto.SaleOrderDto;
 import com.jxc.jxcmanage.service.CustomerService;
-import com.jxc.jxcmanage.service.ProductService;
 import com.jxc.jxcmanage.util.ImportExcel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.InputStream;
+import java.util.List;
 
 @RestController
 @RequestMapping("/customer")
