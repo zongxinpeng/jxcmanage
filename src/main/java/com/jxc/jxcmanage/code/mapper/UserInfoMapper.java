@@ -1,9 +1,10 @@
-package com.jxc.jxcmanage.mapper;
+package com.jxc.jxcmanage.code.mapper;
 
+
+import com.jxc.jxcmanage.code.entity.UserInfo;
 
 import java.util.List;
 import java.util.Map;
-import com.jxc.jxcmanage.entity.UserInfo;
 
 public interface UserInfoMapper {
 

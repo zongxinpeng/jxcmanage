@@ -1,4 +1,4 @@
-package com.jxc.jxcmanage.entity;
+package com.jxc.jxcmanage.code.entity;
 
 
 

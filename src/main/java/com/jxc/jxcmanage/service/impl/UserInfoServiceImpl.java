@@ -2,8 +2,8 @@ package com.jxc.jxcmanage.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.jxc.jxcmanage.entity.UserInfo;
-import com.jxc.jxcmanage.mapper.UserInfoMapper;
+import com.jxc.jxcmanage.code.entity.UserInfo;
+import com.jxc.jxcmanage.code.mapper.UserInfoMapper;
 import com.jxc.jxcmanage.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -3,7 +3,7 @@ package com.jxc.jxcmanage.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jxc.jxcmanage.common.ResultBean;
-import com.jxc.jxcmanage.entity.UserInfo;
+import com.jxc.jxcmanage.code.entity.UserInfo;
 import com.jxc.jxcmanage.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

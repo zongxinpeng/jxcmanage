@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan({ "com.jxc.jxcmanage.mapper", "com.jxc.jxcmanage.code.mapper" })
+@MapperScan({ "com.jxc.jxcmanage.code.mapper" })
 public class JxcmanageApplication {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(JxcmanageApplication.class);

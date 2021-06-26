@@ -1,6 +1,6 @@
 package com.jxc.jxcmanage.service;
 
-import com.jxc.jxcmanage.entity.UserInfo;
+import com.jxc.jxcmanage.code.entity.UserInfo;
 
 import java.util.Map;
 
