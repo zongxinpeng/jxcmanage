@@ -59,6 +59,18 @@ public class SaleOrderController {
 	}
 
 	/**
+	 * 保存或更新
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/addOrUpdateInfo")
+	public ResultBean addOrUpdateInfo(@RequestBody SaleOrderDto param) {
+		return saleOrderService.addOrUpdateInfo(param);
+
+	}
+
+
+	/**
 	 * 产品更新
 	 * 
 	 * @param param

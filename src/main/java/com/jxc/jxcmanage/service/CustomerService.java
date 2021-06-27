@@ -49,6 +49,11 @@ public class CustomerService {
 		return bean;
 	}
 
+	/**
+	 * 更新或者保存
+	 * @param param
+	 * @return
+	 */
 	public ResultBean addOrUpdateCustomerInfo(final CustomerDto param){
 		//更新
 		param.setUpdatedBy(Constant.DEFAULT_BY);

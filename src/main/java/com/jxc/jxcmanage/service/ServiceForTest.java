@@ -47,7 +47,7 @@ public class ServiceForTest {
 		List<ProductDto> dtos = new ArrayList<>();
 		ProductDto dto = new ProductDto();
 		dto.setStatus(1);
-		dto.setAccountId(1);
+		//dto.setAccountId(1);
 		dto.setCreatedBy("2");
 		dto.setUpdatedBy("5");
 		dto.setCreatedDate(new Date());

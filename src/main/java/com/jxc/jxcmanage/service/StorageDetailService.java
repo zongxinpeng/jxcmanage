@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.jxc.jxcmanage.dto.SaleOrderDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +46,23 @@ public class StorageDetailService {
 		}
 		bean = ResultBean.success();
 		return bean;
+	}
+
+	/**
+	 * 更新或者保存
+	 * @param param
+	 * @return
+	 */
+	public ResultBean addOrUpdateInfo(final StorageDetailDto param){
+		//更新
+		param.setUpdatedBy(Constant.DEFAULT_BY);
+		if(param.getId()!=null && param.getId().intValue()>0){
+			return update(param);
+		} else {//新增
+			param.setStatus(1);//默认1
+			param.setCreatedBy(Constant.DEFAULT_BY);
+			return save(param);
+		}
 	}
 
 	/**

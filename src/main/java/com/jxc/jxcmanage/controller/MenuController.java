@@ -2,6 +2,7 @@ package com.jxc.jxcmanage.controller;
 
 import com.jxc.jxcmanage.code.entity.MenuInfo;
 import com.jxc.jxcmanage.common.ResultBean;
+import com.jxc.jxcmanage.dto.CustomerDto;
 import com.jxc.jxcmanage.dto.ProductDto;
 import com.jxc.jxcmanage.dto.SaleOrderDto;
 import com.jxc.jxcmanage.service.MenuService;
@@ -43,6 +44,17 @@ public class MenuController {
 	@PostMapping("/save")
 	public ResultBean save(@RequestBody MenuInfo menuInfo) {
 		return menuService.save(menuInfo);
+
+	}
+
+	/**
+	 * 保存或更新
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/addOrUpdateInfo")
+	public ResultBean addOrUpdateInfo(@RequestBody MenuInfo param) {
+		return menuService.addOrUpdateInfo(param);
 
 	}
 

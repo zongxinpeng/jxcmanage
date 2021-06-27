@@ -2,6 +2,8 @@ package com.jxc.jxcmanage.controller;
 
 import java.io.InputStream;
 import java.util.List;
+
+import com.jxc.jxcmanage.code.entity.MenuInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,6 +57,17 @@ public class ProductController {
 	@PostMapping("/save")
 	public ResultBean save(@RequestBody ProductDto param) {
 		return productService.save(param);
+
+	}
+
+	/**
+	 * 保存或更新
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/addOrUpdateInfo")
+	public ResultBean addOrUpdateInfo(@RequestBody ProductDto param) {
+		return productService.addOrUpdateInfo(param);
 
 	}
 

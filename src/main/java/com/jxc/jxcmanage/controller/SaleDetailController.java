@@ -1,5 +1,6 @@
 package com.jxc.jxcmanage.controller;
 
+import com.jxc.jxcmanage.dto.SaleAmountDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,6 +50,17 @@ public class SaleDetailController {
 	@PostMapping("/save")
 	public ResultBean save(@RequestBody SaleDetailDto param) {
 		return saleDetailService.save(param);
+
+	}
+
+	/**
+	 * 保存或更新
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/addOrUpdateInfo")
+	public ResultBean addOrUpdateInfo(@RequestBody SaleDetailDto param) {
+		return saleDetailService.addOrUpdateInfo(param);
 
 	}
 

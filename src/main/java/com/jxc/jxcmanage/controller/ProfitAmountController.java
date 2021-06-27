@@ -1,5 +1,6 @@
 package com.jxc.jxcmanage.controller;
 
+import com.jxc.jxcmanage.dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,6 +49,17 @@ public class ProfitAmountController {
 	@PostMapping("/save")
 	public ResultBean save(@RequestBody ProfitAmountDto param) {
 		return profitAmountService.save(param);
+
+	}
+
+	/**
+	 * 保存或更新
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/addOrUpdateInfo")
+	public ResultBean addOrUpdateInfo(@RequestBody ProfitAmountDto param) {
+		return profitAmountService.addOrUpdateInfo(param);
 
 	}
 

@@ -1,6 +1,7 @@
 package com.jxc.jxcmanage.controller;
 
 import com.jxc.jxcmanage.common.ResultBean;
+import com.jxc.jxcmanage.dto.SupplierDto;
 import com.jxc.jxcmanage.dto.SysDepartmentDto;
 import com.jxc.jxcmanage.service.SysDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,17 @@ public class SysDepartmentController {
 	@PostMapping("/save")
 	public ResultBean save(@RequestBody SysDepartmentDto param) {
 		return sysDepartmentService.save(param);
+
+	}
+
+	/**
+	 * 保存或更新
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/addOrUpdateInfo")
+	public ResultBean addOrUpdateInfo(@RequestBody SysDepartmentDto param) {
+		return sysDepartmentService.addOrUpdateInfo(param);
 
 	}
 
