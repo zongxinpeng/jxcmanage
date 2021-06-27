@@ -29,4 +29,6 @@ public class Constant {
 	public static final String HORIZONTAL = "|";
 	public static final String CROSSING = "-";
 
+	public static final String DEFAULT_BY = "SYSTEM";
+
 }

@@ -1,5 +1,6 @@
 package com.jxc.jxcmanage.controller;
 
+import com.jxc.jxcmanage.dto.StorageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -50,6 +51,18 @@ public class StorageDetailController {
 		return storageDetailService.save(param);
 
 	}
+
+	/**
+	 * 保存或更新
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/addOrUpdateInfo")
+	public ResultBean addOrUpdateInfo(@RequestBody StorageDetailDto param) {
+		return storageDetailService.addOrUpdateInfo(param);
+
+	}
+
 
 	/**
 	 * 产品更新

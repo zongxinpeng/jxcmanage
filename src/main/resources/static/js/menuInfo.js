@@ -2,6 +2,9 @@ $(function () {
     toastr.options.positionClass = 'toast-top-center';
 
     menuInfoList();
+
+    //TODO 临时用
+    sessionStorage.setItem("userCode", "SYSTEM");
 });
 
 

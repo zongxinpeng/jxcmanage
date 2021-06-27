@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.jxc.jxcmanage.dto.ProfitAmountDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -47,6 +49,23 @@ public class SaleAmountService {
 		}
 		bean = ResultBean.success();
 		return bean;
+	}
+
+	/**
+	 * 更新或者保存
+	 * @param param
+	 * @return
+	 */
+	public ResultBean addOrUpdateInfo(final SaleAmountDto param){
+		//更新
+		param.setUpdatedBy(Constant.DEFAULT_BY);
+		if(param.getId()!=null && param.getId().intValue()>0){
+			return update(param);
+		} else {//新增
+			param.setStatus(1);//默认1
+			param.setCreatedBy(Constant.DEFAULT_BY);
+			return save(param);
+		}
 	}
 
 	/**

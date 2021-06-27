@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jxc.jxcmanage.code.entity.UserInfo;
 import com.jxc.jxcmanage.code.mapper.UserInfoMapper;
+import com.jxc.jxcmanage.constants.Constant;
 import com.jxc.jxcmanage.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,11 +37,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public int addOrUpdateUserInfo(UserInfo userInfo) {
         //更新
-        userInfo.setUpdatedBy(DEFAULT_BY);
+        userInfo.setUpdatedBy(Constant.DEFAULT_BY);
         if(userInfo.getId()!=null && userInfo.getId().intValue()>0){
             return userInfoMapper.updateUserInfoById(userInfo);
         } else {//新增
-            userInfo.setCreatedBy(DEFAULT_BY);
+            userInfo.setCreatedBy(Constant.DEFAULT_BY);
             return userInfoMapper.insertUserInfo(userInfo);
         }
     }
