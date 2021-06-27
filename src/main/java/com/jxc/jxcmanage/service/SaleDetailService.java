@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.jxc.jxcmanage.dto.SaleAmountDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -43,8 +41,8 @@ public class SaleDetailService {
 		try {
 			saleDetailMapper.insertSelective(saleDetail);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "销售订单数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "销售订单数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
@@ -99,8 +97,8 @@ public class SaleDetailService {
 			SaleDetail now = saleDetailMapper.selectByPrimaryKey(param.getId());
 			StringUtil.compareModel(old, now);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "产品数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "销售订单数据"));
 		}
 		bean = ResultBean.success();
 		return bean;

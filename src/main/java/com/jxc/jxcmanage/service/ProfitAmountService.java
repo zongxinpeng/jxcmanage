@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.jxc.jxcmanage.dto.ProductDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -44,8 +42,8 @@ public class ProfitAmountService {
 		try {
 			profitAmountMapper.insertSelective(profitAmount);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "利润数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "利润数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
@@ -100,8 +98,8 @@ public class ProfitAmountService {
 			ProfitAmount now = profitAmountMapper.selectByPrimaryKey(param.getId());
 			StringUtil.compareModel(old, now);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "利润数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "利润数据"));
 		}
 		bean = ResultBean.success();
 		return bean;

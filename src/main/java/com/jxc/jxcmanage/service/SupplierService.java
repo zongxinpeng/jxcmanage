@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.jxc.jxcmanage.dto.StorageDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,8 +40,8 @@ public class SupplierService {
 		try {
 			supplierMapper.insertSelective(supplier);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "供应商/厂家数据"));
 			e.printStackTrace();
+			return ResultBean.fail(String.format(Constant.LOG_FORMAT, "供应商/厂家数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
@@ -98,8 +96,8 @@ public class SupplierService {
 			Supplier now = supplierMapper.selectByPrimaryKey(param.getId());
 			StringUtil.compareModel(old, now);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "供应商数据"));
 			e.printStackTrace();
+			return ResultBean.fail(String.format(Constant.LOG_FORMAT, "供应商/厂家数据"));
 		}
 		bean = ResultBean.success();
 		return bean;

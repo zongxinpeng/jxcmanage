@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.jxc.jxcmanage.code.entity.MenuInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,8 +48,8 @@ public class ProductService {
 		try {
 			productMapper.insertSelective(product);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "产品数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "产品数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
@@ -106,8 +104,8 @@ public class ProductService {
 			Product now = productMapper.selectByPrimaryKey(param.getId());
 			StringUtil.compareModel(old, now);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "产品数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "产品数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
@@ -188,9 +186,5 @@ public class ProductService {
 		}
 		String message = String.format(Constant.IMPORT_BATCH, params.size());
 		return ResultBean.success(message);
-	}
-
-	public static void main(String[] args) {
-		System.out.println(String.format(Constant.LOG_FORMAT, "产品数据"));
 	}
 }

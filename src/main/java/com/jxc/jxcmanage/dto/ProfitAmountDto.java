@@ -3,138 +3,186 @@ package com.jxc.jxcmanage.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class ProfitAmountDto extends BaseDto{
+import org.springframework.util.ObjectUtils;
 
-    private Long id;
+import com.jxc.jxcmanage.constants.Constant;
 
-    private Long supplierId;
+import cn.hutool.core.date.DateUtil;
 
-    private Long productId;
+public class ProfitAmountDto extends BaseDto {
 
-    private Long accountId;
+	private Long id;
 
-    private BigDecimal amount;
+	private Long supplierId;
 
-    private String saleDate;
+	private Long productId;
 
-    private String statisticsType;
+	private Long accountId;
 
-    private String note;
+	private BigDecimal amount;
 
-    private Integer status;
+	private String saleDate;
 
-    private String createdBy;
+	private String statisticsType;
 
-    private String updatedBy;
+	private String note;
 
-    private Date createdDate;
+	private Integer status;
 
-    private Date updatedDate;
+	private String createdBy;
 
+	private String updatedBy;
 
-    public Long getId() {
-        return id;
-    }
+	private Date createdDate;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	private Date updatedDate;
 
-    public Long getSupplierId() {
-        return supplierId;
-    }
+	private Date startDate;
 
-    public void setSupplierId(Long supplierId) {
-        this.supplierId = supplierId;
-    }
+	private Date endDate;
+	private String createdDateDisplay;
 
-    public Long getProductId() {
-        return productId;
-    }
+	private String updatedDateDisplay;
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
+	public Date getStartDate() {
+		return startDate;
+	}
 
-    public Long getAccountId() {
-        return accountId;
-    }
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
 
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
-    }
+	public Date getEndDate() {
+		return endDate;
+	}
 
-    public BigDecimal getAmount() {
-        return amount;
-    }
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getSaleDate() {
-        return saleDate;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setSaleDate(String saleDate) {
-        this.saleDate = saleDate == null ? null : saleDate.trim();
-    }
+	public Long getSupplierId() {
+		return supplierId;
+	}
 
-    public String getStatisticsType() {
-        return statisticsType;
-    }
+	public void setSupplierId(Long supplierId) {
+		this.supplierId = supplierId;
+	}
 
-    public void setStatisticsType(String statisticsType) {
-        this.statisticsType = statisticsType == null ? null : statisticsType.trim();
-    }
+	public Long getProductId() {
+		return productId;
+	}
 
-    public String getNote() {
-        return note;
-    }
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
 
-    public void setNote(String note) {
-        this.note = note == null ? null : note.trim();
-    }
+	public Long getAccountId() {
+		return accountId;
+	}
 
-    public Integer getStatus() {
-        return status;
-    }
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	public BigDecimal getAmount() {
+		return amount;
+	}
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy == null ? null : createdBy.trim();
-    }
+	public String getSaleDate() {
+		return saleDate;
+	}
 
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
+	public void setSaleDate(String saleDate) {
+		this.saleDate = saleDate == null ? null : saleDate.trim();
+	}
 
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy == null ? null : updatedBy.trim();
-    }
+	public String getStatisticsType() {
+		return statisticsType;
+	}
 
-    public Date getCreatedDate() {
-        return createdDate;
-    }
+	public void setStatisticsType(String statisticsType) {
+		this.statisticsType = statisticsType == null ? null : statisticsType.trim();
+	}
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
+	public String getNote() {
+		return note;
+	}
 
-    public Date getUpdatedDate() {
-        return updatedDate;
-    }
+	public void setNote(String note) {
+		this.note = note == null ? null : note.trim();
+	}
 
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
-    }
+	public Integer getStatus() {
+		return status;
+	}
 
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy == null ? null : createdBy.trim();
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy == null ? null : updatedBy.trim();
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public String getCreatedDateDisplay() {
+		if (!ObjectUtils.isEmpty(createdDate)) {
+			createdDateDisplay = DateUtil.format(createdDate, Constant.TIME);
+		}
+		return createdDateDisplay;
+	}
+
+	public void setCreatedDateDisplay(String createdDateDisplay) {
+		this.createdDateDisplay = createdDateDisplay;
+	}
+
+	public String getUpdatedDateDisplay() {
+		if (!ObjectUtils.isEmpty(updatedDate)) {
+			updatedDateDisplay = DateUtil.format(updatedDate, Constant.TIME);
+		}
+		return updatedDateDisplay;
+	}
+
+	public void setUpdatedDateDisplay(String updatedDateDisplay) {
+		this.updatedDateDisplay = updatedDateDisplay;
+	}
 }

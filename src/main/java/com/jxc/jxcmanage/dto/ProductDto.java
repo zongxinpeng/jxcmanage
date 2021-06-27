@@ -2,6 +2,9 @@ package com.jxc.jxcmanage.dto;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import org.springframework.util.ObjectUtils;
+import com.jxc.jxcmanage.constants.Constant;
+import cn.hutool.core.date.DateUtil;
 
 public class ProductDto extends BaseDto {
 
@@ -35,7 +38,14 @@ public class ProductDto extends BaseDto {
 
 	private String updatedDateDisplay;
 
+	private Date startDate;
+
+	private Date endDate;
+
 	public String getCreatedDateDisplay() {
+		if (!ObjectUtils.isEmpty(createdDate)) {
+			createdDateDisplay = DateUtil.format(createdDate, Constant.TIME);
+		}
 		return createdDateDisplay;
 	}
 
@@ -44,6 +54,9 @@ public class ProductDto extends BaseDto {
 	}
 
 	public String getUpdatedDateDisplay() {
+		if (!ObjectUtils.isEmpty(updatedDate)) {
+			updatedDateDisplay = DateUtil.format(updatedDate, Constant.TIME);
+		}
 		return updatedDateDisplay;
 	}
 
@@ -153,6 +166,22 @@ public class ProductDto extends BaseDto {
 
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 }

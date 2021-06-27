@@ -28,7 +28,7 @@ public class Constant {
 	public static final String NA = "NA";
 	public static final String HORIZONTAL = "|";
 	public static final String CROSSING = "-";
-
 	public static final String DEFAULT_BY = "SYSTEM";
+	public static final String TIME = "yyyy-MM-dd HH:mm:ss";
 
 }

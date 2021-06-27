@@ -2,6 +2,12 @@ package com.jxc.jxcmanage.dto;
 
 import java.util.Date;
 
+import org.springframework.util.ObjectUtils;
+
+import com.jxc.jxcmanage.constants.Constant;
+
+import cn.hutool.core.date.DateUtil;
+
 public class SysDepartmentDto extends BaseDto {
 
 	private Long id;
@@ -21,6 +27,9 @@ public class SysDepartmentDto extends BaseDto {
 	private Date createdDate;
 
 	private Date updatedDate;
+	private String createdDateDisplay;
+
+	private String updatedDateDisplay;
 
 	public Long getId() {
 		return id;
@@ -77,7 +86,7 @@ public class SysDepartmentDto extends BaseDto {
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy == null ? null : updatedBy.trim();
 	}
- 
+
 	public Date getCreatedDate() {
 		return createdDate;
 	}
@@ -94,4 +103,25 @@ public class SysDepartmentDto extends BaseDto {
 		this.updatedDate = updatedDate;
 	}
 
+	public String getCreatedDateDisplay() {
+		if (!ObjectUtils.isEmpty(createdDate)) {
+			createdDateDisplay = DateUtil.format(createdDate, Constant.TIME);
+		}
+		return createdDateDisplay;
+	}
+
+	public void setCreatedDateDisplay(String createdDateDisplay) {
+		this.createdDateDisplay = createdDateDisplay;
+	}
+
+	public String getUpdatedDateDisplay() {
+		if (!ObjectUtils.isEmpty(updatedDate)) {
+			updatedDateDisplay = DateUtil.format(updatedDate, Constant.TIME);
+		}
+		return updatedDateDisplay;
+	}
+
+	public void setUpdatedDateDisplay(String updatedDateDisplay) {
+		this.updatedDateDisplay = updatedDateDisplay;
+	}
 }

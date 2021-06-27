@@ -3,6 +3,12 @@ package com.jxc.jxcmanage.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.util.ObjectUtils;
+
+import com.jxc.jxcmanage.constants.Constant;
+
+import cn.hutool.core.date.DateUtil;
+
 public class SaleOrderDto extends BaseDto{
 	private Long id;
 
@@ -37,8 +43,27 @@ public class SaleOrderDto extends BaseDto{
 	private Date createdDate;
 
 	private Date updatedDate;
+	private Date startDate;
 
+	private Date endDate;
+	private String createdDateDisplay;
 
+	private String updatedDateDisplay;
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -174,5 +199,26 @@ public class SaleOrderDto extends BaseDto{
 
 	public void setAccountId(Long accountId) {
 		this.accountId = accountId;
+	}
+	public String getCreatedDateDisplay() {
+		if (!ObjectUtils.isEmpty(createdDate)) {
+			createdDateDisplay = DateUtil.format(createdDate, Constant.TIME);
+		}
+		return createdDateDisplay;
+	}
+
+	public void setCreatedDateDisplay(String createdDateDisplay) {
+		this.createdDateDisplay = createdDateDisplay;
+	}
+
+	public String getUpdatedDateDisplay() {
+		if (!ObjectUtils.isEmpty(updatedDate)) {
+			updatedDateDisplay = DateUtil.format(updatedDate, Constant.TIME);
+		}
+		return updatedDateDisplay;
+	}
+
+	public void setUpdatedDateDisplay(String updatedDateDisplay) {
+		this.updatedDateDisplay = updatedDateDisplay;
 	}
 }

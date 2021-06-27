@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.jxc.jxcmanage.dto.SaleOrderDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,8 +39,8 @@ public class StorageDetailService {
 		try {
 			storageDetailMapper.insertSelective(storageDetail);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "库存明细数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "库存明细数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
@@ -100,8 +98,8 @@ public class StorageDetailService {
 			StorageDetail now = storageDetailMapper.selectByPrimaryKey(param.getId());
 			StringUtil.compareModel(old, now);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "库存入库数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "库存明细数据"));
 		}
 		bean = ResultBean.success();
 		return bean;

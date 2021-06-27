@@ -62,6 +62,9 @@
 			<if test="supplierId > 0">
 				AND supplier_id = #{supplierId}
 			</if>
+			<if test="created_date != null">
+				AND created_date <![CDATA[ >= ]]> #{startDate,jdbcType=TIMESTAMP} AND created_date <![CDATA[ <= ]]> #{endDate,jdbcType=TIMESTAMP}
+			</if>
 		</where>
 	</select>
 </mapper>

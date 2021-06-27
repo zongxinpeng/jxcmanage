@@ -43,8 +43,8 @@ public class StorageService {
 		try {
 			storageMapper.insertSelective(storage);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "库存数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "库存数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
@@ -105,8 +105,8 @@ public class StorageService {
 			Storage now = storageMapper.selectByPrimaryKey(param.getId());
 			StringUtil.compareModel(old, now);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "库存入库数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "库存数据"));
 		}
 		bean = ResultBean.success();
 		return bean;

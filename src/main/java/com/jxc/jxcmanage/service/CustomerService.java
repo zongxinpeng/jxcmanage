@@ -42,8 +42,8 @@ public class CustomerService {
 		try {
 			customerMapper.insertSelective(customer);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "客户数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "客户数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
@@ -102,8 +102,8 @@ public class CustomerService {
 			Customer now = customerMapper.selectByPrimaryKey(param.getId());
 			StringUtil.compareModel(old, now);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "客户数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "客户数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
@@ -181,10 +181,4 @@ public class CustomerService {
 		String message = String.format(Constant.IMPORT_BATCH, params.size());
 		return ResultBean.success(message);
 	}
-
-	public static void main(String[] args) {
-		System.out.println(String.format(Constant.LOG_FORMAT, "客户数据"));
-	}
-
-
 }

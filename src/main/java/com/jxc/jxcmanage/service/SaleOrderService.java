@@ -43,8 +43,8 @@ public class SaleOrderService {
 		try {
 			saleOrderMapper.insertSelective(saleOrder);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "销售订单数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "销售订单数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
@@ -105,8 +105,8 @@ public class SaleOrderService {
 			SaleOrder now = saleOrderMapper.selectByPrimaryKey(param.getId());
 			StringUtil.compareModel(old, now);
 		} catch (Exception e) {
-			bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "产品数据"));
 			e.printStackTrace();
+			return bean = ResultBean.fail(String.format(Constant.LOG_FORMAT, "销售订单数据"));
 		}
 		bean = ResultBean.success();
 		return bean;
