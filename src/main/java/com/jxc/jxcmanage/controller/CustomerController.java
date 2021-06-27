@@ -54,6 +54,12 @@ public class CustomerController {
 
 	}
 
+	@PostMapping("/addOrUpdateCustomerInfo")
+	public ResultBean addOrUpdateCustomerInfo(@RequestBody CustomerDto param) {
+		return customerService.addOrUpdateCustomerInfo(param);
+
+	}
+
 	/**
 	 * 产品更新
 	 * 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>用户信息</title>
+    <title>客户信息</title>
     <!--@*1、Jquery组件引用*@-->
     <script src="./../bootStrap/jquery.min.js"></script>
 
@@ -29,7 +29,7 @@
 
     <!--@*4、页面Js文件的引用*@-->
     <script src="../js/common/bootstrapConfirm.js"></script>
-    <script src="../js/userInfo.js"></script>
+    <script src="../js/customerInfo.js"></script>
 </head>
 <body>
 <div class="panel-body" style="padding-bottom: 0px;">
@@ -39,11 +39,11 @@
             <form id="formSearch" class="form-horizontal">
                 <div class="form-group" style="margin-top:15px">
 
-                    <label class="control-label col-sm-1" for="txt_search_user_code">用户名</label>
+                    <!--<label class="control-label col-sm-1" for="txt_search_user_code">用户名</label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" id="txt_search_user_code">
-                    </div>
-                    <label class="control-label col-sm-1" for="txt_search_user_name">姓名</label>
+                    </div>-->
+                    <label class="control-label col-sm-1" for="txt_search_user_name">客户名称</label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" id="txt_search_user_name">
                     </div>
@@ -59,15 +59,8 @@
 
                 </div>
 
-                <div class="form-group" style="margin-top:15px">
+                <!--<div class="form-group" style="margin-top:15px">
                     <label class="control-label col-sm-1">创建时间</label>
-                    <!--<div class="col-sm-2">
-                        <input type="text" class="form-control" id="txt_search_created_date_start" placeholder="开始日期">
-                    </div>
-
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="txt_search_created_date_end" placeholder="结束日期">
-                    </div>-->
 
                     <div class="col-sm-2 m-b-xs">
                         <input type="text" class="form-control" id="txt_search_created_date_start" placeholder="开始日期">
@@ -77,24 +70,14 @@
                     </div>
 
 
-                </div>
+                </div>-->
 
 
             </form>
         </div>
     </div>
 
-    <!--<div id="toolbar" class="btn-group">
-        <button id="btn_add" type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-        </button>
-        <button id="btn_edit" type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
-        </button>
-        <button id="btn_delete" type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-        </button>
-    </div>-->
+
     <table id="tb_departments"></table>
 
 
@@ -110,16 +93,16 @@
                     <input type="hidden" id="txt_id" value="">
                     <input type="hidden" id="txt_type" value="">
                     <div class="form-group">
-                        <label for="txt_userCode">用户名</label>
-                        <input type="text" name="txt_userCode" class="form-control" id="txt_userCode" placeholder="用户名">
+                        <label for="txt_userName">客户姓名</label>
+                        <input type="text" name="txt_userName" class="form-control" id="txt_userName" placeholder="客户姓名">
                     </div>
                     <div class="form-group">
-                        <label for="txt_userName">用户姓名</label>
-                        <input type="text" name="txt_userName" class="form-control" id="txt_userName" placeholder="用户姓名">
+                        <label for="txt_mobile">手机号</label>
+                        <input type="text" name="txt_mobile" class="form-control" id="txt_mobile" placeholder="手机号">
                     </div>
                     <div class="form-group">
-                        <label for="txt_userPassword">用户密码</label>
-                        <input type="text" name="txt_userPassword" class="form-control" id="txt_userPassword" placeholder="用户密码">
+                        <label for="txt_address">地址</label>
+                        <input type="text" name="txt_address" class="form-control" id="txt_address" placeholder="地址">
                     </div>
                     <div class="form-group">
                         <label for="txt_userDesc">备注</label>
