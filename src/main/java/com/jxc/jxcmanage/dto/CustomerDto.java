@@ -2,6 +2,12 @@ package com.jxc.jxcmanage.dto;
 
 import java.util.Date;
 
+import org.springframework.util.ObjectUtils;
+
+import com.jxc.jxcmanage.constants.Constant;
+
+import cn.hutool.core.date.DateUtil;
+
 public class CustomerDto extends BaseDto {
 
 	private Long id;
@@ -28,6 +34,9 @@ public class CustomerDto extends BaseDto {
 
 	private Date updatedDate;
 
+	private String createdDateDisplay;
+
+	private String updatedDateDisplay;
 	public Long getId() {
 		return id;
 	}
@@ -123,5 +132,25 @@ public class CustomerDto extends BaseDto {
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+	public String getCreatedDateDisplay() {
+		if (!ObjectUtils.isEmpty(createdDate)) {
+			createdDateDisplay = DateUtil.format(createdDate, Constant.TIME);
+		}
+		return createdDateDisplay;
+	}
 
+	public void setCreatedDateDisplay(String createdDateDisplay) {
+		this.createdDateDisplay = createdDateDisplay;
+	}
+
+	public String getUpdatedDateDisplay() {
+		if (!ObjectUtils.isEmpty(updatedDate)) {
+			updatedDateDisplay = DateUtil.format(updatedDate, Constant.TIME);
+		}
+		return updatedDateDisplay;
+	}
+
+	public void setUpdatedDateDisplay(String updatedDateDisplay) {
+		this.updatedDateDisplay = updatedDateDisplay;
+	}
 }
