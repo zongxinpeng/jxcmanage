@@ -18,7 +18,7 @@ public interface CustomerMapper {
 
     int updateByPrimaryKey(Customer record);
     // 批量写入
-	int insertBatch(List<CustomerDto> params);
+	int insertBatch(List<CustomerDto> list);
 	//　分页查询
 	List<CustomerDto> list(CustomerDto param);
 }

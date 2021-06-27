@@ -50,8 +50,8 @@
 	<select id="list" resultMap="CustomBaseResultMap">
 		SELECT * FROM customer
 		<where>
-			<if test="city_code != null">
-				AND city_code = #{cityCode}
+			<if test="cityCode != null">
+				AND cityCode = #{cityCode}
 			</if>
 			<if test="status != null">
 				AND `status` = #{status}
